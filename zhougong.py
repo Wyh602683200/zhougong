@@ -72,7 +72,7 @@ class zhougong(Plugin):
                     text = ("周公解梦结果：\n" "--------------------")
                     while i < len(data):
                         line = f"\n【{i+1}】:{data[i]['title']}\n🔗:{data[i]['result']}\n"
-                        line.replace("<br>","\n")
+                        line = line.replace("<br>","\n")
                         text+=line
                         i+=1
                   
