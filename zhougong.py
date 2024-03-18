@@ -65,8 +65,16 @@ class zhougong(Plugin):
             if response.status_code == 200:
                 json_data = response.json()
                 if json_data.get('code') == 200 and  json_data['data']['list']:
-                    text = json_data['data']['list']
-                    logger.info(f"主接口获取成功：{text}")
+                    data = json_data['data']['list'][:10]
+                    logger.info(json_data)
+                                        
+                    i = 0
+                    text = ("结果：\n" "--------------------")
+                    while i < len(data):
+                        line = f"\n【{i+1}】:{data[i]['title']}\n🔗:{data[i]['result']}"
+                        text+=line
+                        i+=1
+                  
                     return text
                 else:
                     logger.error(f"主接口返回值异常:{json_data}")
@@ -79,38 +87,6 @@ class zhougong(Plugin):
                 
         logger.error("所有接口都挂了,无法获取")
         return None
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
