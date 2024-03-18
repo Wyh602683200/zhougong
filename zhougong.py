@@ -54,9 +54,9 @@ class zhougong(Plugin):
         url = BASE_URL_DM
         # params = "type=json"
         if self.content.startswith("周公解梦"):
-            params = {"num":1, "word":self.content.replace(" ", "")[4:]}
+            params = {"num":5, "word":self.content.replace(" ", "")[4:]}
         else:
-            params = {"num":1, "word":self.content.replace(" ", "")[2:]}
+            params = {"num":5, "word":self.content.replace(" ", "")[2:]}
             
         headers = {'Content-Type': "application/x-www-form-urlencoded"}
         try:
@@ -71,7 +71,7 @@ class zhougong(Plugin):
                     i = 0
                     text = ("周公解梦结果：\n" "--------------------")
                     while i < len(data):
-                        line = f"\n【{i+1}】:{data[i]['title']}\n:{data[i]['result']}\n"
+                        line = f"\n【{i+1}】:{data[i]['title']}\n{data[i]['result']}\n"
                         line = line.replace("<br>","\n")
                         text+=line
                         i+=1
