@@ -69,9 +69,10 @@ class zhougong(Plugin):
                     logger.info(json_data)
                                         
                     i = 0
-                    text = ("结果：\n" "--------------------")
+                    text = ("周公说：\n" "--------------------")
                     while i < len(data):
-                        line = f"\n【{i+1}】:{data[i]['title']}\n🔗:{data[i]['result']}"
+                        line = f"\n【{i+1}】:{data[i]['title']}\n🔗:{data[i]['result']}\n"
+                        
                         text+=line
                         i+=1
                   
@@ -87,17 +88,5 @@ class zhougong(Plugin):
                 
         logger.error("所有接口都挂了,无法获取")
         return None
-
-
-
-
-
-
-
-
-
-
-
-
 
 
